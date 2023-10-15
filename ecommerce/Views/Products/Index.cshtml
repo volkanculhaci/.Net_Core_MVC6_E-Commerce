@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ecommerce.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Categories</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a asp-controller="Products" asp-action="Index">All Categories</a>
+                </li>
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <li class="list-group-item">
+                        <a asp-controller="Products" asp-action="Index" asp-route-category="@category.CategoryId">
+                            @category.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+
+        <div class="col-md-9">
+            <h1 class="mb-4">Products</h1>
+            <div class="row">
+                @foreach (var product in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Name</h5>
+                                <p class="card-text">@product.Description</p>
+                                <p class="card-text"><strong>@product.Price.ToString("C")</strong></p>
+                                <a asp-controller="Products" asp-action="Details" asp-route-id="@product.ProductId" class="btn btn-primary">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ecommerce.styles.css" asp-append-version="true" />
+    <style>
+        .nav-link .fa-shopping-cart {
+    font-size: 24px; /* Adjust the icon size as needed */
+    color: #007bff; /* Adjust the icon color as needed */
+    margin-right: 10px; /* Adjust the right margin to control spacing */}
+</style>
+<a asp-controller="ShoppingCart" asp-action="Index">
+    <i class="fas fa-shopping-cart"></i>
+    @if (ViewBag.CartCount != null && ViewBag.CartCount > 0)
+    {
+        <span class="badge badge-pill badge-primary">@ViewBag.CartCount</span>
+    }
+</a>
+
 </head>
 <body>
     <header>
@@ -31,9 +45,26 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products Index</a>
                         </li>
 
+                        <li class="nav-item">  
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role</a>  
+                        </li>  
 
+                        <li><a href="https://localhost:7152/coreadmin">Core Admin</a></li>
 
                     </ul>
+
+                     
+                    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <!-- Cart button with a shopping cart icon -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                </a>
+            </li>
+        </ul>
+    </div>
+
                     <partial name="_LoginPartial" />
                 </div>
             </div>

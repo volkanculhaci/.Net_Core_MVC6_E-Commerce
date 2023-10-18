@@ -284,3 +284,6 @@ G:\Drive'ım\Engineering\CODE\myprojects\ecommerce\ecommerce\bin\Debug\net6.0\ru
 G:\Drive'ım\Engineering\CODE\myprojects\ecommerce\ecommerce\bin\Debug\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
 G:\Drive'ım\Engineering\CODE\myprojects\ecommerce\ecommerce\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
 G:\Drive'ım\Engineering\CODE\myprojects\ecommerce\ecommerce\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+G:\Drive'ım\Engineering\CODE\myprojects\ecommerce\ecommerce\obj\Debug\net6.0\ecommerce.sourcelink.json
+G:\Drive'ım\Engineering\CODE\myprojects\ecommerce\ecommerce\bin\Debug\net6.0\DotNetEd.CoreAdmin.dll
+G:\Drive'ım\Engineering\CODE\myprojects\ecommerce\ecommerce\bin\Debug\net6.0\Mvc.Grid.Core.dll

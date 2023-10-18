@@ -17,10 +17,36 @@ namespace ecommerce.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.20")
+                .HasAnnotation("ProductVersion", "6.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("CartItem", b =>
+                {
+                    b.Property<int>("CartItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartItemId"), 1L, 1);
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ShoppingCartCartId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartItemId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ShoppingCartCartId");
+
+                    b.ToTable("CartItems");
+                });
 
             modelBuilder.Entity("ecommerce.Models.Category", b =>
                 {
@@ -113,6 +139,9 @@ namespace ecommerce.Data.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("StockQuantity")
+                        .HasColumnType("int");
 
                     b.HasKey("ProductId");
 
@@ -323,6 +352,38 @@ namespace ecommerce.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ShoppingCart", b =>
+                {
+                    b.Property<int>("CartId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"), 1L, 1);
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CartId");
+
+                    b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("CartItem", b =>
+                {
+                    b.HasOne("ecommerce.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ShoppingCart", null)
+                        .WithMany("CartItems")
+                        .HasForeignKey("ShoppingCartCartId");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ecommerce.Models.OrderItem", b =>
                 {
                     b.HasOne("ecommerce.Models.Order", null)
@@ -403,6 +464,11 @@ namespace ecommerce.Data.Migrations
             modelBuilder.Entity("ecommerce.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("ShoppingCart", b =>
+                {
+                    b.Navigation("CartItems");
                 });
 #pragma warning restore 612, 618
         }

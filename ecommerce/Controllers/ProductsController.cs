@@ -15,14 +15,21 @@ namespace ecommerce.Controllers
             _context = context;
         }
 
-        // Display a list of products
-        public async Task<IActionResult> Index(int? category)
+        public async Task<IActionResult> Index(int? category, string searchTerm)
         {
             var productsQuery = _context.Products.AsQueryable();
 
             if (category.HasValue)
             {
                 productsQuery = productsQuery.Where(p => p.CategoryId == category);
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // Filter products based on the search term.
+                productsQuery = productsQuery.Where(p =>
+                    p.Name.Contains(searchTerm) ||
+                    p.Description.Contains(searchTerm));
             }
 
             var products = await productsQuery.ToListAsync();
@@ -61,5 +68,30 @@ namespace ecommerce.Controllers
 
             return View(productDetails);
         }
+
+        //// Search feature
+        //[Route("products/search")]
+        //public IActionResult Index(string searchTerm)
+        //{
+        //    IQueryable<Product> products = _context.Products;
+
+        //    if (!string.IsNullOrEmpty(searchTerm))
+        //    {
+        //        searchTerm = searchTerm.ToLower(); // Convert the search term to lowercase
+
+        //        // Filter products based on the search term (case-insensitive search).
+        //        products = products.Where(p =>
+        //            p.Name.ToLower().Contains(searchTerm) ||
+        //            p.Description.ToLower().Contains(searchTerm));
+        //    }
+
+        //    var productViewModel = new ProductViewModel
+        //    {
+        //        Products = products.ToList(),
+        //        // Your other model properties...
+        //    };
+
+        //    return View(productViewModel);
+        //}
     }
 }

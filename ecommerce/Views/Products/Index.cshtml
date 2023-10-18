@@ -4,6 +4,19 @@
     ViewData["Title"] = "Products";
 }
 
+<div class="col-md-3">
+    <h3>Search Products</h3>
+    <form asp-controller="Products" asp-action="Index" method="get">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="searchTerm" placeholder="Search for products">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-3">
@@ -31,7 +44,8 @@
                 {
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                            <img src="https://cdn.cimri.io/image/1200x1200/razeroyuncumousefiyatlar_668446925.jpg" class="card-img-top" alt="@product.Name">
+                            @* <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name"> *@
                             <div class="card-body">
                                 <h5 class="card-title">@product.Name</h5>
                                 <p class="card-text">@product.Description</p>

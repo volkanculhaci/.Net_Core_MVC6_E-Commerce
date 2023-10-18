@@ -78,7 +78,7 @@
 
 /* Additional styling can be added as needed. */
 
-                </style>
+</style>
 <div class="container">
         <div class="breadcrumb">
         <a href="@Url.Action("Index", "Products")">All Products</a>
@@ -110,7 +110,7 @@
             </div>
         </div>
         <br>
-        <form asp-controller="ShoppingCart" asp-action="AddToCart" method="post">
+        <form asp-controller="Cart" asp-action="AddItem" method="post">
             <input type="hidden" name="id" value="@Model.Product.ProductId" />
             <div class="form-group">
                 <label for="quantity">Quantity:</label>

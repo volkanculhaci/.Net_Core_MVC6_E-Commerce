@@ -1,0 +1,107 @@
+﻿@using ecommerce.Models
+@model List<CartItemViewModel>
+
+<style>
+    /* Apply styles to the cart container */
+.cart-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Style the cart title */
+.cart-title {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Style the cart table */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .cart-table th {
+        background-color: #f5f5f5;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .cart-table td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+/* Style the Remove link */
+.remove-link {
+    color: #E91E63; /* Pink color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .remove-link:hover {
+        color: #ff4081; /* Light pink color */
+    }
+
+/* Style the empty cart message */
+.empty-cart {
+    font-style: italic;
+    color: #777;
+}
+
+/* Style the cart total */
+.cart-total {
+    font-size: 24px;
+    font-weight: bold;
+    color: #E91E63; /* Pink color */
+    margin-top: 10px;
+        text-align: right; /* Align the text to the right */
+
+}
+
+</style>
+<div class="cart-container">
+    <h1 class="cart-title">Shopping Cart</h1>
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td><img src="https://cdn.cimri.io/image/1200x1200/razeroyuncumousefiyatlar_668446925.jpg" alt="@item.ProductName" style="max-width: 100px;" /></td>
+                        <td>@item.ProductName</td>
+
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.ToString("C")</td> <!-- Format the price as currency -->
+                        <td>@item.Total.ToString("C")</td> <!-- Format the total as currency -->
+                        <td>
+                            <a asp-controller="Cart" asp-action="Remove" asp-route-productId="@item.ProductId" class="remove-link">Remove</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="empty-cart">Your cart is empty.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p class="cart-total">Total: @Model.Sum(item => item.Total).ToString("C")</p> <!-- Format the total as currency -->
+</div>

@@ -33,37 +33,32 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home/Index.cshtml</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        </li> *@
                         
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products Index</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
                         </li>
 
                         <li class="nav-item">  
                             <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role</a>  
+                        </li>
+                        
+                        <li class="nav-item">  
+                            <a class="nav-link bold text-dark" href="https://localhost:7152/coreadmin">Management</a> 
                         </li>  
 
-                        <li><a href="https://localhost:7152/coreadmin">Core Admin</a></li>
-
+                        <li class="nav-item">  
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Sepetim</a> 
+                        </li>  
+                      
                     </ul>
 
-                     
-                    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <!-- Cart button with a shopping cart icon -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-shopping-cart"></i> Cart
-                </a>
-            </li>
-        </ul>
-    </div>
 
                     <partial name="_LoginPartial" />
                 </div>

@@ -11,6 +11,10 @@ namespace ecommerce.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<Cart> Carts { get; set; } // Add this line
+
+        public DbSet<CartItem> CartItems { get; set; } // Add this line
+
 
 
         //public DbSet<Order> Orders { get; set; }
@@ -18,6 +22,14 @@ namespace ecommerce.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<CartItem>()
+                .HasKey(c => c.CartItemId);
+
         }
     }
 }

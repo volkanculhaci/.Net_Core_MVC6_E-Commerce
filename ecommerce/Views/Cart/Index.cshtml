@@ -59,10 +59,9 @@
     color: #E91E63; /* Pink color */
     margin-top: 10px;
         text-align: right; /* Align the text to the right */
-
 }
-
 </style>
+
 <div class="cart-container">
     <h1 class="cart-title">Shopping Cart</h1>
     <table class="cart-table">
@@ -101,7 +100,13 @@
                     <td colspan="5" class="empty-cart">Your cart is empty.</td>
                 </tr>
             }
+
         </tbody>
     </table>
-    <p class="cart-total">Total: @Model.Sum(item => item.Total).ToString("C")</p> <!-- Format the total as currency -->
+    <p class="cart-total">Total: @Model.Sum(item => item.Total).ToString("C")</p> 
+    <div>
+        <button class="btn btn-primary float-right" asp-controller="Cart" asp-action="goToCheckout">Proceed to Checkout</button>
+    </div>
+
+
 </div>

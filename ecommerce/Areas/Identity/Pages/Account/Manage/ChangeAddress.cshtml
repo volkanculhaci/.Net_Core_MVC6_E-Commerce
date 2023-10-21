@@ -1,0 +1,27 @@
+﻿@page
+@model ChangeAddressModel
+@{
+    ViewData["Title"] = "Change Address";
+}
+
+<h3>@ViewData["Title"]</h3>
+<form id = "change-adress" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-floating">
+        <input asp-for="Input.Address" class="form-control" />
+        <label asp-for="Input.Address" class="form-label">Address</label>
+        <span asp-validation-for="Input.Address" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <input asp-for="Input.City" class="form-control" />
+        <label asp-for="Input.City" class="form-label">City</label>
+        <span asp-validation-for="Input.City" class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+        <input asp-for="Input.PostalCode" class="form-control" />
+        <label asp-for="Input.PostalCode" class="form-label">Postal Code</label>
+        <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+    </div>
+    <!-- Add other address-related fields -->
+    <button type="submit" class="btn btn-primary">Update Address</button>
+</form>

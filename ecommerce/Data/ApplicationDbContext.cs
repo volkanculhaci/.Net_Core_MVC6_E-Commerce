@@ -14,6 +14,7 @@ namespace ecommerce.Data
         public DbSet<Cart> Carts { get; set; } // Add this line
 
         public DbSet<CartItem> CartItems { get; set; } // Add this line
+        public DbSet<Address> Addresses { get; set; } // Add this line
 
 
 
@@ -26,10 +27,16 @@ namespace ecommerce.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Address>().ToTable("Addresses");
 
             modelBuilder.Entity<CartItem>()
                 .HasKey(c => c.CartItemId);
 
+            modelBuilder.Entity<Address>()
+        .HasOne(a => a.User)
+        .WithMany()
+        .HasForeignKey(a => a.UserId);
         }
+        public DbSet<ecommerce.Models.Address>? Address { get; set; }
     }
 }

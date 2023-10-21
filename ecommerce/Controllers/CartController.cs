@@ -126,5 +126,60 @@ public class CartController : Controller
         return RedirectToAction("Index");
     }
 
+    [Authorize]
+    public IActionResult Checkout()
+    {
+        // User is authenticated, proceed with cart creation and retrieval
+        var userId = _userManager.GetUserId(User); // Get the user's ID
+
+        // Check if the user has a cart
+        var userCart = _context.Carts.FirstOrDefault(c => c.UserId == userId);
+
+        if (userCart == null)
+        {
+            // Create a new cart for the user
+            userCart = new Cart { UserId = userId };
+            _context.Carts.Add(userCart);
+            _context.SaveChanges();
+        }
+
+        // Fetch the user's cart items and display them
+        var cartItems = _context.CartItems.Where(ci => ci.CartId == userCart.CartId).ToList();
+
+        // Use the GetCartItems method to convert the CartItems to CartItemViewModel
+        var cartItemViewModels = GetCartItems(cartItems);
+
+        return View(cartItemViewModels);
+
+
+    }
+
+    public IActionResult goToCheckout()
+    {
+        return RedirectToAction("Checkout");
+    }
+    //[Authorize]
+    //public IActionResult Checkout()
+    //{
+    //    // Retrieve the user's delivery addresses and payment options
+    //    // You can fetch this information from your data source and pass it to the view
+
+    //    // Example: Fetch the user's delivery addresses
+    //    var userId = _userManager.GetUserId(User);
+    //    var deliveryAddresses = _context.UserAddresses.Where(ua => ua.UserId == userId).ToList();
+
+    //    // Example: Fetch the user's payment options
+    //    var paymentOptions = _context.PaymentOptions.Where(po => po.UserId == userId).ToList();
+
+    //    var model = new CheckoutViewModel
+    //    {
+    //        DeliveryAddresses = deliveryAddresses,
+    //        PaymentOptions = paymentOptions,
+    //        // You can add more properties as needed
+    //    };
+
+    //    return View(model);
+    //}
+
 
 }

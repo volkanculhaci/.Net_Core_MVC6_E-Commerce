@@ -6,6 +6,7 @@ namespace ecommerce.Models
     {
         IEnumerable<Product> Products { get; }
 
+        void DeleteProduct(int productId);
         Product GetProductById(int productId);
     }
 }

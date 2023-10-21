@@ -1,0 +1,41 @@
+﻿@model AdminViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1>Admin Dashboard</h1>
+<h2>Product Management</h2>
+<a asp-action="Create" class="btn btn-primary">Create New Product</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Stock Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>@product.CategoryId</td>
+                <td>@product.StockQuantity</td>
+                <td>
+                    <a asp-controller="Admin" asp-action="Edit" asp-route-id="@product.ProductId">Edit</a> |
+                    <a asp-controller="Admin" asp-action="Details" asp-route-id="@product.ProductId">Details</a> |
+                    <a asp-controller="Admin" asp-action="Delete" asp-route-id="@product.ProductId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

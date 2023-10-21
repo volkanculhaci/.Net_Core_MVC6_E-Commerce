@@ -9,6 +9,7 @@ namespace ecommerce.Models
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string ImageUrl { get; set; }
+        public IFormFile ImageFile { get; set; }
 
         public int CategoryId { get; set; } // Reference to Category
         public Category Category { get; set; }

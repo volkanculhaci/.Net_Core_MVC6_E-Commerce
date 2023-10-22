@@ -1,9 +1,13 @@
-﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+﻿@model ecommerce.Models.Category
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Create Role</h1>
+
+<h1>Create</h1>
+
+<h4>Category</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -20,11 +24,11 @@
         </form>
     </div>
 </div>
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -4,7 +4,12 @@ namespace ecommerce.Models
 {
     public class AdminViewModel
     {
-        public IEnumerable<Product> Products { get; set; }
+        public List<Product> Products { get; set; }
         public SelectList Categories { get; set; }
+        public IFormFile ImageFile { get; set; }
+        public Product NewProduct { get; set; }
+
     }
+
+
 }

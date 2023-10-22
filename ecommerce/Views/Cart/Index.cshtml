@@ -76,37 +76,45 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model != null && Model.Count > 0)
-            {
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        
-                        <td><img src="https://cdn.cimri.io/image/1200x1200/razeroyuncumousefiyatlar_668446925.jpg" alt="@item.ProductName" style="max-width: 100px;" /></td>
-                        <td>@item.ProductName</td>
-
-                        <td>@item.Quantity</td>
-                        <td>@item.Price.ToString("C")</td> <!-- Format the price as currency -->
-                        <td>@item.Total.ToString("C")</td> <!-- Format the total as currency -->
-                        <td>
-                            <a asp-controller="Cart" asp-action="Remove" asp-route-productId="@item.ProductId" class="remove-link">Remove</a>
-                        </td>
-                    </tr>
-                }
-            }
-            else
-            {
-                <tr>
-                    <td colspan="5" class="empty-cart">Your cart is empty.</td>
-                </tr>
-            }
-
-        </tbody>
-    </table>
+    @if (Model != null && Model.Count > 0)
+    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@item.ImagePath" alt="@item.ProductName" style="max-width: 100px;" />
+                </td>
+                <td>@item.ProductName</td>
+                <td>
+                    <form asp-controller="Cart" asp-action="UpdateQuantity" method="post">
+                        <input type="hidden" name="productId" value="@item.ProductId" />
+                        <input type="number" name="quantity" value="@item.Quantity" min="1" />
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@item.Total.ToString("C")</td>
+                <td>
+                    <a asp-controller="Cart" asp-action="Remove" asp-route-productId="@item.ProductId" class="remove-link">Remove</a>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="5" class="empty-cart">Your cart is empty.</td>
+        </tr>
+    }
+</tbody>
+</table>
     <p class="cart-total">Total: @Model.Sum(item => item.Total).ToString("C")</p> 
-    <div>
-        <button class="btn btn-primary float-right" asp-controller="Cart" asp-action="goToCheckout">Proceed to Checkout</button>
-    </div>
+@*     <div>
+        <button class="btn btn-primary float-right" asp-controller="Cart" asp-action="gotocheckout">Proceed to Checkout</button>
+    </div> *@
 
+<form action="https://localhost:7152/Cart/checkout" >
+    <button class="btn btn-primary float-right"  type="submit">Proceed to Checkout</button>
+</form>
 
 </div>

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ecommerce.Models
 {
@@ -8,7 +9,9 @@ namespace ecommerce.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public string ImageUrl { get; set; }
+        public string ImagePath { get; set; }
+
+        [NotMapped]
         public IFormFile ImageFile { get; set; }
 
         public int CategoryId { get; set; } // Reference to Category

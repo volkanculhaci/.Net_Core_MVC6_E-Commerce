@@ -1,8 +1,11 @@
-﻿namespace ecommerce.Models
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace ecommerce.Models
 {
     public class ProductViewModel
     {
-        public List<Product> Products { get; set; }
-
+        public Product NewProduct { get; set; }
+        public SelectList Categories { get; set; }
     }
+
 }

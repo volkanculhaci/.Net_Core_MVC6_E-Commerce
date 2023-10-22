@@ -1,0 +1,43 @@
+﻿@model IEnumerable<IGrouping<int, ecommerce.Models.OrderItem>>
+<div class="container">
+   @foreach (var group in Model)
+   {
+   <div class="card mb-4">
+      <div class="card-header">
+         Order Date: @group.First().Order.OrderDate.ToString()
+         <br />
+         Order ID: @group.Key
+      </div>
+      <div class="card-body">
+         <table class="table">
+            <thead>
+               <tr>
+                  <th></th>
+                  <th>Product Name</th>
+                  <th>Unit Price</th>
+                  <th>Quantity</th>
+                  <th>Total Price</th>
+               </tr>
+            </thead>
+            <tbody>
+               @foreach (var item in group)
+               {
+               <tr>
+                  <td>
+                     <img src="~/images/@item.Product.ImagePath" class="card-img-top" alt="@item.Product.Name" style="max-width: 100px; max-height: 100px;" />
+                  </td>
+                  <td>@item.Product.Name</td>
+                  <td>@item.UnitPrice.ToString("C")</td>
+                  <td>@item.Quantity</td>
+                  <td>@(item.UnitPrice * item.Quantity)</td>
+               </tr>
+               }
+            </tbody>
+         </table>
+         <div class="text-right">
+            <strong>Order Total: @group.Sum(item => item.UnitPrice * item.Quantity).ToString("C")</strong>
+         </div>
+      </div>
+   </div>
+   }
+</div>

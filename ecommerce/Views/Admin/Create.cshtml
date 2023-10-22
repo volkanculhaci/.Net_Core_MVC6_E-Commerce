@@ -1,46 +1,39 @@
-﻿@model ecommerce.Models.AdminViewModel
-
-@{
-    ViewData["Title"] = "Create Product";
-}
+﻿@model ecommerce.Models.ProductViewModel
 
 <h2>Create Product</h2>
 
-<form asp-action="Create">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+<form asp-controller="Admin" asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label asp-for="Products.First().Name">Name</label>
-        <input asp-for="Products.First().Name" class="form-control" />
+        <label asp-for="NewProduct.Name">Name</label>
+        <input asp-for="NewProduct.Name" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Products.First().Description">Description</label>
-        <input asp-for="Products.First().Description" class="form-control" />
+        <label asp-for="NewProduct.Description">Description</label>
+        <input asp-for="NewProduct.Description" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Products.First().CategoryId">Category</label>
-        <select asp-for="Products.First().CategoryId" asp-items="Model.Categories" class="form-control"></select>
+        <label asp-for="NewProduct.CategoryId">Category</label>
+        <select asp-for="NewProduct.CategoryId" asp-items="Model.Categories" class="form-control"></select>
     </div>
 
     <div class="form-group">
-        <label asp-for="Products.First().Price"></label>
-        <input asp-for="Products.First().Price" class="form-control" />
+        <label asp-for="NewProduct.ImageFile">Product Image</label>
+        <input type="file" asp-for="NewProduct.ImageFile" class="form-control-file" />
     </div>
 
-    <div class="form-group">
-        <label asp-for="Products.First().StockQuantity"></label>
-        <input asp-for="Products.First().StockQuantity" class="form-control" />
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Products.FirstOrDefault().ImageFile">Image File</label>
-        <input type="file" asp-for="Products.FirstOrDefault().ImageFile" class="form-control" />
-    </div>
 
 
     <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
+        <label asp-for="NewProduct.Price">Price</label>
+        <input asp-for="NewProduct.Price" class="form-control" />
     </div>
+
+    <div class="form-group">
+        <label asp-for="NewProduct.StockQuantity">Stock Quantity</label>
+        <input asp-for="NewProduct.StockQuantity" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Product</button>
 </form>

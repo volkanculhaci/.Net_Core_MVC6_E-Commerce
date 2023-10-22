@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 public class CartController : Controller
 {
@@ -31,8 +32,8 @@ public class CartController : Controller
                     ProductId = cartItem.ProductId,
                     ProductName = cartItem.ProductName,
                     Quantity = cartItem.Quantity,
-                    Price = product.Price, // Set the correct product price
-                                           // Add other property mappings here
+                    Price = product.Price,
+
                 });
             }
         }
@@ -66,20 +67,14 @@ public class CartController : Controller
 
         return View(cartItemViewModels);
 
-
     }
 
-    //private List<CartItemViewModel> GetCartItems(List<CartItem> cartItems)
-    //{
-    //    return cartItems.Select(cartItem => new CartItemViewModel
-    //    {
-    //        ProductId = cartItem.ProductId, // Map properties accordingly
-    //        ProductName = cartItem.ProductName,
-    //        Quantity = cartItem.Quantity,
-    //        Price = cartItem.Price,
-    //        // Add other property mappings here
-    //    }).ToList();
-    //}
+    public IActionResult gotocheckout()
+    {
+
+        return RedirectToAction("Checkout");
+
+    }
 
     [Authorize]
     [HttpPost]
@@ -117,6 +112,7 @@ public class CartController : Controller
                 ProductId = product.ProductId,
                 ProductName = product.Name, // Set the ProductName from the product
                 Quantity = quantity,
+
                 // You may also copy other properties from 'product' as needed
             });
         }
@@ -126,7 +122,6 @@ public class CartController : Controller
         return RedirectToAction("Index");
     }
 
-    [Authorize]
     public IActionResult Checkout()
     {
         // User is authenticated, proceed with cart creation and retrieval
@@ -154,32 +149,85 @@ public class CartController : Controller
 
     }
 
-    public IActionResult goToCheckout()
+    [HttpPost]
+    public IActionResult UpdateQuantity(int productId, int quantity)
     {
-        return RedirectToAction("Checkout");
+        // Retrieve the cart item and update the quantity in your database
+        var cartItem = _context.CartItems.FirstOrDefault(ci => ci.ProductId == productId);
+
+        if (cartItem != null)
+        {
+            cartItem.Quantity = quantity;
+            _context.SaveChanges();
+        }
+
+        // Redirect back to the cart view
+        return RedirectToAction("Index");
     }
-    //[Authorize]
-    //public IActionResult Checkout()
-    //{
-    //    // Retrieve the user's delivery addresses and payment options
-    //    // You can fetch this information from your data source and pass it to the view
 
-    //    // Example: Fetch the user's delivery addresses
-    //    var userId = _userManager.GetUserId(User);
-    //    var deliveryAddresses = _context.UserAddresses.Where(ua => ua.UserId == userId).ToList();
+    [Authorize]
+    public IActionResult PlaceOrder()
+    {
+        var userId = _userManager.GetUserId(User);
 
-    //    // Example: Fetch the user's payment options
-    //    var paymentOptions = _context.PaymentOptions.Where(po => po.UserId == userId).ToList();
+        // Fetch the user's cart items
+        var cartItems = _context.CartItems
+            .Include(ci => ci.Product)
+            .Where(ci => ci.Cart.UserId == userId)
+            .ToList();
 
-    //    var model = new CheckoutViewModel
-    //    {
-    //        DeliveryAddresses = deliveryAddresses,
-    //        PaymentOptions = paymentOptions,
-    //        // You can add more properties as needed
-    //    };
+        if (cartItems.Count == 0)
+        {
+            // Handle the case where the cart is empty
+            return RedirectToAction("Index");
+        }
 
-    //    return View(model);
-    //}
+        // Create an order record
+        var order = new Order
+        {
+            UserId = userId,
+            OrderDate = DateTime.Now, // You may customize the order date as needed
+            OrderItems = new List<OrderItem>() // Initialize the list of order items
+        };
+
+        foreach (var cartItem in cartItems)
+        {
+            // Create order item records
+            var orderItem = new OrderItem
+            {
+                ProductId = cartItem.ProductId,
+                Quantity = cartItem.Quantity,
+                UnitPrice = cartItem.Product.Price
+                // Add other order item details as needed
+            };
+
+            // Add the order item to the order's order items
+            order.OrderItems.Add(orderItem);
+
+            // Update product quantities
+            cartItem.Product.StockQuantity -= cartItem.Quantity;
+        }
+
+        // Clear the cart
+        _context.CartItems.RemoveRange(cartItems);
+
+        // Add the order to the database
+        _context.Orders.Add(order);
+
+        // Save changes to the database
+        _context.SaveChanges();
+
+        return RedirectToAction("OrderConfirmation");
+
+    }
+
+
+    public IActionResult OrderConfirmation()
+    {
+        return View();
+    }
+
+
 
 
 }

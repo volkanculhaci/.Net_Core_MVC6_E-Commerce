@@ -4,7 +4,7 @@
 
 namespace ecommerce.Data.Migrations
 {
-    public partial class addressv3 : Migration
+    public partial class bugfix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

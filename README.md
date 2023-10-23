@@ -36,9 +36,13 @@ This is an E-Commerce web application built with ASP.NET Core MVC 6 and Entity F
 ![ER Diagram](/ecommerce/gitImages/er_diagram.png)
 
 ## Screenshots
+Home Page
 ![Screenshot 1](ecommerce/gitImages/Screenshot_1.png)
+Cart
 ![Screenshot 2](ecommerce/gitImages/Screenshot_2.png)
+Orders
 ![Screenshot 3](ecommerce/gitImages/Screenshot_3.png)
+Admin Page | Product Management
 ![Screenshot 4](ecommerce/gitImages/Screenshot_4.png)
 
 ## Getting Started

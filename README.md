@@ -35,6 +35,12 @@ This is an E-Commerce web application built with ASP.NET Core MVC 6 and Entity F
 ## Entity Relationship (ER) Diagram
 ![ER Diagram](/ecommerce/gitImages/er_diagram.png)
 
+## Screenshots
+![Screenshot 1](ecommerce/gitImages/Screenshot_1.png)
+![Screenshot 2](ecommerce/gitImages/Screenshot_2.png)
+![Screenshot 3](ecommerce/gitImages/Screenshot_3.png)
+![Screenshot 4](ecommerce/gitImages/Screenshot_4.png)
+
 ## Getting Started
 
 1. Clone this repository to your local machine.

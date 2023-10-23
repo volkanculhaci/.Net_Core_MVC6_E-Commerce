@@ -51,7 +51,13 @@ Admin Page | Product Management
 2. Configure your database connection in the `appsettings.json` and files.
 3. Run database migrations using the Entity Framework CLI or the Package Manager Console in Visual Studio:
 4. Launch the application:
-  
+
+## Admin Account Credentials
+For development and administrative purposes, you can use the following credentials to log in as an admin:
+
+Email: admin@admin.com
+Password: Admin123!
+
 ## Usage
 
 - Visit the homepage to browse products.
@@ -89,7 +95,7 @@ Bu, ASP.NET Core MVC 6 ve Entity Framework Core ile oluşturulmuş bir E-Ticaret
 
 - Kategori Yönetimi:** Yönetici kullanıcılar ürün kategorileri oluşturabilir, düzenleyebilir ve silebilir.
 
-## Teknoloji Yığını
+## Teknolojiler
 
 - **ASP.NET Core MVC 6:** Web uygulamasını oluşturmak için kullanılır.
 
@@ -97,12 +103,6 @@ Bu, ASP.NET Core MVC 6 ve Entity Framework Core ile oluşturulmuş bir E-Ticaret
 
 - **ASP.NET Core Identity:** Kullanıcı kimlik doğrulaması ve yönetimi sağlar.
 
-## Video (Tıklayınız 😎)
-> Profesyonel İpucu: Daha hızlı ve daha heyecan verici bir deneyim için 1,5x hızda izlemeniz önerilir! 🚀😄
-[![Videoyu izleyin](https://img.youtube.com/vi/D6tP9oSECLg/0.jpg)](https://www.youtube.com/watch?v=D6tP9oSECLg)
-
-## Varlık İlişkileri (ER) Diyagramı
-![ER Diyagramı](/ecommerce/gitImages/er_diagram.png)
 ## Başlarken
 
 1. Bu depoyu yerel makinenize klonlayın.

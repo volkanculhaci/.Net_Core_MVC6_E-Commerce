@@ -28,7 +28,8 @@ This is an E-Commerce web application built with ASP.NET Core MVC 6 and Entity F
 
 - **ASP.NET Core Identity:** Provides user authentication and management.
 
-## Video Demo
+## Video (Click on it 😎)
+> Pro Tip: Watching at 1.5x speed is recommended for a faster and more exciting experience! 🚀😄
 [![Watch the video](https://img.youtube.com/vi/D6tP9oSECLg/0.jpg)](https://www.youtube.com/watch?v=D6tP9oSECLg)
 
 ## Entity Relationship (ER) Diagram

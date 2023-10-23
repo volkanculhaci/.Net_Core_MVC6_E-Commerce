@@ -1,4 +1,11 @@
 ﻿@model IEnumerable<IGrouping<int, ecommerce.Models.OrderItem>>
+<style>
+    .card-img-top{
+        object-fit: contain;
+
+    }
+</style>
+
 <div class="container">
    @foreach (var group in Model)
    {

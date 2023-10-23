@@ -29,6 +29,12 @@
         <label asp-for="Products.First().Price"></label>
         <input asp-for="Products.First().Price" class="form-control" />
     </div>
+    
+    <div class="form-group">
+        <label asp-for="NewProduct.ImageFile">Product Image</label>
+        <input type="file" asp-for="NewProduct.ImageFile" class="form-control-file" />
+    </div>
+
 
     <div class="form-group">
         <label asp-for="Products.First().StockQuantity"></label>

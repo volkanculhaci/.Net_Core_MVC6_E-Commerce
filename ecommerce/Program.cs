@@ -29,13 +29,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
-//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-//    .AddEntityFrameworkStores<ApplicationDbContext>()
-//    .AddDefaultTokenProviders();
 
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<ApplicationDbContext>();
-//builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -87,9 +81,7 @@ using (var scope = app.Services.CreateScope())
             await roleManager.CreateAsync(new IdentityRole(role));
         }
     }
-    //await context.Database.MigrateAsync();
-    //await SeedData.SeedRolesAsync(roleManager);
-    //await SeedData.SeedSuperAdminAsync(userManager);
+
 }
 
 using (var scope = app.Services.CreateScope())

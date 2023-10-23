@@ -5,16 +5,16 @@
       "PackagePath": "staticwebassets\\ecommerce.bundle.scp.css"
     },
     {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\css\\products.css",
+      "PackagePath": "staticwebassets\\css\\products.css"
+    },
+    {
       "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
-    },
-    {
-      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\0000000000000PC_msg1006794640-7329.jpg",
-      "PackagePath": "staticwebassets\\images\\0000000000000PC_msg1006794640-7329.jpg"
     },
     {
       "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\0000000000000PigPencilCase_SmartTag (1).jpg",
@@ -25,8 +25,104 @@
       "PackagePath": "staticwebassets\\images\\0000000000000create2_glorious-model-d-minus-kablosuz-gaming-mouse-mat-siyah-2-600x600.jpg"
     },
     {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\backpack.jpg",
+      "PackagePath": "staticwebassets\\images\\backpack.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\cereal.jpg",
+      "PackagePath": "staticwebassets\\images\\cereal.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\clock.jpg",
+      "PackagePath": "staticwebassets\\images\\clock.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\coffee-table.jpg",
+      "PackagePath": "staticwebassets\\images\\coffee-table.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\earrings.jpg",
+      "PackagePath": "staticwebassets\\images\\earrings.jpg"
+    },
+    {
       "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\example1.jpg",
       "PackagePath": "staticwebassets\\images\\example1.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\fridge.jpg",
+      "PackagePath": "staticwebassets\\images\\fridge.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\gatsby.jpg",
+      "PackagePath": "staticwebassets\\images\\gatsby.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\jacket.jpg",
+      "PackagePath": "staticwebassets\\images\\jacket.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\jeans.jpg",
+      "PackagePath": "staticwebassets\\images\\jeans.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\laptop.jpg",
+      "PackagePath": "staticwebassets\\images\\laptop.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\mirror.jpg",
+      "PackagePath": "staticwebassets\\images\\mirror.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\mockingbird.jpg",
+      "PackagePath": "staticwebassets\\images\\mockingbird.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\monopoly.jpg",
+      "PackagePath": "staticwebassets\\images\\monopoly.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\necklace.jpg",
+      "PackagePath": "staticwebassets\\images\\necklace.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\pc.jpg",
+      "PackagePath": "staticwebassets\\images\\pc.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\smartphone.jpg",
+      "PackagePath": "staticwebassets\\images\\smartphone.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\soccer-ball.jpg",
+      "PackagePath": "staticwebassets\\images\\soccer-ball.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\sofa.jpg",
+      "PackagePath": "staticwebassets\\images\\sofa.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\soup.jpg",
+      "PackagePath": "staticwebassets\\images\\soup.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\speaker.jpg",
+      "PackagePath": "staticwebassets\\images\\speaker.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\t-shirt.jpg",
+      "PackagePath": "staticwebassets\\images\\t-shirt.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\tent.jpg",
+      "PackagePath": "staticwebassets\\images\\tent.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\tire.jpg",
+      "PackagePath": "staticwebassets\\images\\tire.jpg"
+    },
+    {
+      "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\images\\washing-machine.jpg",
+      "PackagePath": "staticwebassets\\images\\washing-machine.jpg"
     },
     {
       "Id": "G:\\Drive'ım\\Engineering\\CODE\\myprojects\\ecommerce\\ecommerce\\wwwroot\\js\\site.js",

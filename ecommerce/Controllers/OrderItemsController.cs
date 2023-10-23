@@ -1,5 +1,7 @@
 ﻿using ecommerce.Data;
 using ecommerce.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,33 +10,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ecommerce.Views.OrderItems
+namespace ecommerce.Controllers
 {
+    [Authorize]
     public class OrderItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public OrderItemsController(ApplicationDbContext context)
+        public OrderItemsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: OrderItems
         public async Task<IActionResult> Index()
         {
-            // Fetch the order items from the database first
-            var orderItems = await _context.OrderItems
-                .Include(item => item.Order)
-                .Include(oi => oi.Product)// Ensure the Order reference is loaded
-                .ToListAsync();
+            // Get the currently logged-in user
+            var user = await _userManager.GetUserAsync(User);
 
-            // Group the order items by OrderId in-memory
-            var groupedOrderItems = orderItems
-                .GroupBy(item => item.Order.OrderId)
-                .OrderByDescending(group => group.Key)
-                .ToList();
+            if (user != null)
+            {
+                // Fetch the order items for the current user
+                var orderItems = await _context.OrderItems
+                    .Where(oi => oi.Order.UserId == user.Id)
+                    .Include(oi => oi.Order)
+                    .Include(oi => oi.Product)
+                    .ToListAsync();
 
-            return View(groupedOrderItems);
+                // Group the order items by OrderId in-memory
+                var groupedOrderItems = orderItems
+                    .GroupBy(item => item.Order.OrderId)
+                    .OrderByDescending(group => group.Key)
+                    .ToList();
+
+                return View(groupedOrderItems);
+            }
+            // Handle the case where the user is not authenticated (e.g., show an error or redirect)
+            return Forbid();
         }
 
         // GET: OrderItems/Details/5

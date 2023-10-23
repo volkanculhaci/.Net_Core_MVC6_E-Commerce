@@ -69,29 +69,5 @@ namespace ecommerce.Controllers
             return View(productDetails);
         }
 
-        //// Search feature
-        //[Route("products/search")]
-        //public IActionResult Index(string searchTerm)
-        //{
-        //    IQueryable<Product> products = _context.Products;
-
-        //    if (!string.IsNullOrEmpty(searchTerm))
-        //    {
-        //        searchTerm = searchTerm.ToLower(); // Convert the search term to lowercase
-
-        //        // Filter products based on the search term (case-insensitive search).
-        //        products = products.Where(p =>
-        //            p.Name.ToLower().Contains(searchTerm) ||
-        //            p.Description.ToLower().Contains(searchTerm));
-        //    }
-
-        //    var productViewModel = new ProductViewModel
-        //    {
-        //        Products = products.ToList(),
-        //        // Your other model properties...
-        //    };
-
-        //    return View(productViewModel);
-        //}
     }
 }

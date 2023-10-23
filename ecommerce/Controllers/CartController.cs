@@ -17,7 +17,7 @@ public class CartController : Controller
         _context = context;
         _userManager = userManager;
     }
-    private List<CartItemViewModel> GetCartItems(List<CartItem> cartItems)
+    private List<CartItemViewModel> GetCartItemsWithImages(List<CartItem> cartItems)
     {
         var cartItemViewModels = new List<CartItemViewModel>();
 
@@ -33,7 +33,7 @@ public class CartController : Controller
                     ProductName = cartItem.ProductName,
                     Quantity = cartItem.Quantity,
                     Price = product.Price,
-
+                    ImagePath = product.ImagePath, // Include the image path
                 });
             }
         }
@@ -41,12 +41,11 @@ public class CartController : Controller
         return cartItemViewModels;
     }
 
-
     [Authorize]
     public IActionResult Index()
     {
         // User is authenticated, proceed with cart creation and retrieval
-        var userId = _userManager.GetUserId(User); // Get the user's ID
+        var userId = _userManager.GetUserId(User);
 
         // Check if the user has a cart
         var userCart = _context.Carts.FirstOrDefault(c => c.UserId == userId);
@@ -62,12 +61,12 @@ public class CartController : Controller
         // Fetch the user's cart items and display them
         var cartItems = _context.CartItems.Where(ci => ci.CartId == userCart.CartId).ToList();
 
-        // Use the GetCartItems method to convert the CartItems to CartItemViewModel
-        var cartItemViewModels = GetCartItems(cartItems);
+        // Use the GetCartItemsWithImages method to include product images
+        var cartItemViewModels = GetCartItemsWithImages(cartItems);
 
         return View(cartItemViewModels);
-
     }
+
 
     public IActionResult gotocheckout()
     {
@@ -142,7 +141,7 @@ public class CartController : Controller
         var cartItems = _context.CartItems.Where(ci => ci.CartId == userCart.CartId).ToList();
 
         // Use the GetCartItems method to convert the CartItems to CartItemViewModel
-        var cartItemViewModels = GetCartItems(cartItems);
+        var cartItemViewModels = GetCartItemsWithImages(cartItems);
 
         return View(cartItemViewModels);
 
